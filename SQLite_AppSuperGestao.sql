@@ -1,6 +1,6 @@
-create database sg
-use sg
+use sg;
 
-select * from migrations;
-
-describe fornecedores;
+select 
+	* 
+from 
+	site_contatos;
