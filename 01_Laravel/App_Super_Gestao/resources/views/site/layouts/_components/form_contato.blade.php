@@ -7,14 +7,20 @@
     <br>
     <input name="email"  value="{{ old('email') }}"  type="text" placeholder="E-mail" class=" {{ $classe }}">
     <br>
+
+   
     <select name="motivo_contato" class=" {{ $classe }}">
         <option value="">Qual o motivo do contato?</option>
-        <option value="1">Dúvida</option>
-        <option value="2">Elogio</option>
-        <option value="3">Reclamação</option>
+
+        @foreach ($motivo_contatos as $key => $motivo_contato)
+            <option value="{{$key}}" {{old('motivo') == $key ? 'selected' : '' }}>{{$motivo_contato}}</option>
+        @endforeach
+        <option value="1" {{ old('motivo_contato')== 1 ? 'selected' : ''}}>Dúvida</option>
+        <option value="2" {{ old('motivo_contato')== 2 ? 'selected' : ''}}>Elogio</option>
+        <option value="3" {{ old('motivo_contato')== 3 ? 'selected' : ''}}>Reclamação</option>
     </select>
     <br>
-    <textarea name="mensagem" class=" {{ $classe }}">{{ (old('mensagem') != '')? old('mensagem'): 'Preencha aqui a sua mensagem'}}</textarea>
+    <textarea name="mensagem" class=" {{ $classe }}">{{(old('mensagem')!='') ? old('mensagem'): 'Preencha aqui a sua mensagem'}}</textarea>
     <br>
     <button type="submit" class=" {{ $classe }}">ENVIAR</button>
 </form>
